@@ -3,6 +3,7 @@
 #include "cinder/CinderMath.h"
 #include "cinder/Rand.h"
 #include "cinder/Utilities.h"
+#include "cinder/ImageIo.h"
 #include "math.h"
 #include "Particle.h"
 
@@ -51,7 +52,9 @@ void BlackAndBlueApp::draw()
         particles[i].draw();
     }
     
-    gl::drawString( "Framerate: " + toString(getAverageFps()), Vec2f( 10.0f, 10.0f ), Color::white(), mFont );
+    writeImage( getHomeDirectory().string() + "image_" + toString( getElapsedFrames() ) + ".png", copyWindowSurface() );
+    
+//    gl::drawString( "Framerate: " + toString(getAverageFps()), Vec2f( 10.0f, 10.0f ), Color::white(), mFont );
 }
 
 CINDER_APP_BASIC( BlackAndBlueApp, RendererGl )
