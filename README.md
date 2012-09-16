@@ -5,6 +5,9 @@ Just a growing collection of sketches as I dust off my C++ chops and try to enga
 
 ## Black And Blue 
 
+![Image Preview](https://img.skitch.com/20120916-dsqwhnstk473y11jy77hi3ey5.jpg)
+
 Black and blue diamonds changing size over time. A very basic particle demo. 
 
+* video: [https://vimeo.com/49527479](https://vimeo.com/49527479)
 * cinder 0.8.4
