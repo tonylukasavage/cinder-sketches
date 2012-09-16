@@ -5,8 +5,8 @@
 //  Class for showing the current average framerate
 //
 
-#ifndef __SavageLook__Utils__
-#define __SavageLook__Utils__
+#ifndef __SavageLook__FrameRate__
+#define __SavageLook__FrameRate__
 
 #include "cinder/app/App.h"
 #include "cinder/Font.h"

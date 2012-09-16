@@ -1,13 +1,9 @@
-#include "cinder/app/AppBasic.h"
-#include "cinder/gl/gl.h"
-//#include "cinder/CinderMath.h"
-//#include "cinder/Rand.h"
-//#include "cinder/Utilities.h"
-//#include "cinder/ImageIo.h"
-//#include "math.h"
-
 #include "Particle.h"
 #include "FrameRate.h"
+#include "Utils.h"
+
+#include "cinder/app/AppBasic.h"
+#include "cinder/gl/gl.h"
 
 using namespace ci;
 using namespace ci::app;
@@ -54,7 +50,8 @@ void BlackAndBlueApp::draw()
     // show frame rate
     frameRate.draw();
     
-//    writeImage( getHomeDirectory().string() + "BlackAndBlue/image_" + toString( getElapsedFrames() ) + ".png", copyWindowSurface() );
+    // capture each frame
+    //savagelook::captureFrame(this);
 }
 
 CINDER_APP_BASIC( BlackAndBlueApp, RendererGl )
