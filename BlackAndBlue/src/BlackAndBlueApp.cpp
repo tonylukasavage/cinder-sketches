@@ -52,7 +52,7 @@ void BlackAndBlueApp::draw()
         particles[i].draw();
     }
     
-    writeImage( getHomeDirectory().string() + "image_" + toString( getElapsedFrames() ) + ".png", copyWindowSurface() );
+    writeImage( getHomeDirectory().string() + "BlackAndBlue/image_" + toString( getElapsedFrames() ) + ".png", copyWindowSurface() );
     
 //    gl::drawString( "Framerate: " + toString(getAverageFps()), Vec2f( 10.0f, 10.0f ), Color::white(), mFont );
 }
