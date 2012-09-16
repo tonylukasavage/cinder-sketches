@@ -5,7 +5,7 @@ Just a growing collection of sketches as I dust off my C++ chops and try to enga
 
 ## Black And Blue 
 
-![Image Preview](https://img.skitch.com/20120916-dsqwhnstk473y11jy77hi3ey5.jpg)
+![Image Preview](https://raw.github.com/tonylukasavage/cinder-sketches/master/BlackAndBlue/ss.png)
 
 Black and blue diamonds changing size over time. A very basic particle demo. 
 
