@@ -19,8 +19,8 @@
 		5323E6B60EAFCA7E003A9687 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B50EAFCA7E003A9687 /* QTKit.framework */; };
 		53E3CDFC0E86099300238D2B /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53E3CDFB0E86099300238D2B /* Carbon.framework */; };
 		7B1DBBE815F2BA5C005E05F9 /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B1DBBE715F2BA5C005E05F9 /* Particle.cpp */; };
-		7B42C49F16066EB400FE62B4 /* FrameRate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B42C49D16066EB400FE62B4 /* FrameRate.cpp */; };
-		7B42C4A016066EB400FE62B4 /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B42C49E16066EB400FE62B4 /* Utils.cpp */; };
+		7BD943C716068E1700523894 /* FrameRate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7BD943C516068E1700523894 /* FrameRate.cpp */; };
+		7BD943C816068E1700523894 /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7BD943C616068E1700523894 /* Utils.cpp */; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,8 +43,10 @@
 		53E3CDFB0E86099300238D2B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		7B1DBBE615F2B2C4005E05F9 /* Particle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Particle.h; sourceTree = "<group>"; };
 		7B1DBBE715F2BA5C005E05F9 /* Particle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Particle.cpp; sourceTree = "<group>"; };
-		7B42C49D16066EB400FE62B4 /* FrameRate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FrameRate.cpp; sourceTree = "<group>"; };
-		7B42C49E16066EB400FE62B4 /* Utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utils.cpp; sourceTree = "<group>"; };
+		7BD943C1160682B800523894 /* FrameRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrameRate.h; sourceTree = "<group>"; };
+		7BD943C2160682B800523894 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		7BD943C516068E1700523894 /* FrameRate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FrameRate.cpp; sourceTree = "<group>"; };
+		7BD943C616068E1700523894 /* Utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utils.cpp; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* BlackAndBlue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlackAndBlue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -73,7 +75,7 @@
 		080E96DDFE201D6D7F000001 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				7B42C49C16066EB400FE62B4 /* src */,
+				7BD943C416068E1700523894 /* src */,
 				00BAE6590E7ED9C10018A608 /* BlackAndBlueApp.cpp */,
 				7B1DBBE715F2BA5C005E05F9 /* Particle.cpp */,
 			);
@@ -130,6 +132,7 @@
 		29B97315FDCFA39411CA2CEA /* Headers */ = {
 			isa = PBXGroup;
 			children = (
+				7BD943C0160682B800523894 /* include */,
 				32CA4F630368D1EE00C91783 /* BlackAndBlue_Prefix.pch */,
 				7B1DBBE615F2B2C4005E05F9 /* Particle.h */,
 			);
@@ -154,11 +157,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		7B42C49C16066EB400FE62B4 /* src */ = {
+		7BD943C0160682B800523894 /* include */ = {
 			isa = PBXGroup;
 			children = (
-				7B42C49D16066EB400FE62B4 /* FrameRate.cpp */,
-				7B42C49E16066EB400FE62B4 /* Utils.cpp */,
+				7BD943C1160682B800523894 /* FrameRate.h */,
+				7BD943C2160682B800523894 /* Utils.h */,
+			);
+			name = include;
+			path = ../../common/include;
+			sourceTree = "<group>";
+		};
+		7BD943C416068E1700523894 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				7BD943C516068E1700523894 /* FrameRate.cpp */,
+				7BD943C616068E1700523894 /* Utils.cpp */,
 			);
 			name = src;
 			path = ../../common/src;
@@ -224,8 +237,8 @@
 			files = (
 				00BAE65A0E7ED9C10018A608 /* BlackAndBlueApp.cpp in Sources */,
 				7B1DBBE815F2BA5C005E05F9 /* Particle.cpp in Sources */,
-				7B42C49F16066EB400FE62B4 /* FrameRate.cpp in Sources */,
-				7B42C4A016066EB400FE62B4 /* Utils.cpp in Sources */,
+				7BD943C716068E1700523894 /* FrameRate.cpp in Sources */,
+				7BD943C816068E1700523894 /* Utils.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
