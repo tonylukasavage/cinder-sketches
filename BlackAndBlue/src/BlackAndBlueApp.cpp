@@ -1,11 +1,13 @@
 #include "cinder/app/AppBasic.h"
 #include "cinder/gl/gl.h"
-#include "cinder/CinderMath.h"
-#include "cinder/Rand.h"
-#include "cinder/Utilities.h"
-#include "cinder/ImageIo.h"
-#include "math.h"
+//#include "cinder/CinderMath.h"
+//#include "cinder/Rand.h"
+//#include "cinder/Utilities.h"
+//#include "cinder/ImageIo.h"
+//#include "math.h"
+
 #include "Particle.h"
+#include "FrameRate.h"
 
 using namespace ci;
 using namespace ci::app;
@@ -17,11 +19,10 @@ class BlackAndBlueApp : public AppBasic {
 public:
     void prepareSettings( Settings *settings );
 	void setup();	
-	void update();
 	void draw();
 private:
     Particle particles[pCount];
-    Font mFont;
+    savagelook::FrameRate frameRate;
 };
 
 void BlackAndBlueApp::prepareSettings( Settings *settings )
@@ -32,14 +33,12 @@ void BlackAndBlueApp::prepareSettings( Settings *settings )
 
 void BlackAndBlueApp::setup()
 {
-    mFont = Font( "Arial", 16.0f );
+    // setup frame rate display
+    frameRate.setup(this);
     
+    // enable transparency
     glEnable (GL_BLEND);
     glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-}
-
-void BlackAndBlueApp::update()
-{
 }
 
 void BlackAndBlueApp::draw()
@@ -52,9 +51,10 @@ void BlackAndBlueApp::draw()
         particles[i].draw();
     }
     
-    writeImage( getHomeDirectory().string() + "BlackAndBlue/image_" + toString( getElapsedFrames() ) + ".png", copyWindowSurface() );
+    // show frame rate
+    frameRate.draw();
     
-//    gl::drawString( "Framerate: " + toString(getAverageFps()), Vec2f( 10.0f, 10.0f ), Color::white(), mFont );
+//    writeImage( getHomeDirectory().string() + "BlackAndBlue/image_" + toString( getElapsedFrames() ) + ".png", copyWindowSurface() );
 }
 
 CINDER_APP_BASIC( BlackAndBlueApp, RendererGl )
