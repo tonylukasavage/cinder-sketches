@@ -17,9 +17,9 @@ using namespace ci;
 class Particle {
 public:
     Particle();
-    Particle(Vec2f pos);
+    Particle(Vec2f pos, ColorA color);
     
-    void setup(Vec2f pos);
+    void setup(Vec2f pos, ColorA color);
     void draw();
     void update();
     

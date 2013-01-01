@@ -14,20 +14,23 @@
 using namespace ci;
 
 Particle::Particle() {
-    setup(Vec2f(Rand::randFloat(800.0f),Rand::randFloat(600.0f)));
+    setup(
+        Vec2f(Rand::randFloat(800.0f),Rand::randFloat(600.0f)),
+        ColorA(Rand::randFloat(1.0f),Rand::randFloat(1.0f),Rand::randFloat(1.0f),1.0f)
+    );
 }
 
-Particle::Particle(Vec2f pos) {
-    setup(pos);
+Particle::Particle(Vec2f pos, ColorA color) {
+    setup(pos, color);
 }
 
 int Particle::getLife() {
     return life;
 }
 
-void Particle::setup(Vec2f pos) {
+void Particle::setup(Vec2f pos, ColorA color) {
     this->pos = pos;
-    color = ColorA(0.0f, 0.0f, 1.0f, 1.0f);
+    this->color = color;
     currentRadius = radius = 30.0f;
     life = 120;
 }
@@ -35,7 +38,7 @@ void Particle::setup(Vec2f pos) {
 void Particle::update() {
     float ratio = life/120.0f;
     currentRadius = radius * ratio;
-    color = ColorA(0.0f, 0.0f, 1.0f, ratio);
+    color.a = ratio;
     life--;
 }
 
