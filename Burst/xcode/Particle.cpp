@@ -16,33 +16,41 @@ using namespace ci;
 Particle::Particle() {
     setup(
         Vec2f(Rand::randFloat(800.0f),Rand::randFloat(600.0f)),
-        ColorA(Rand::randFloat(1.0f),Rand::randFloat(1.0f),Rand::randFloat(1.0f),1.0f)
+        ColorA(Rand::randFloat(1.0f),Rand::randFloat(1.0f),Rand::randFloat(1.0f),1.0f),
+        30.0f,
+        120
     );
 }
 
-Particle::Particle(Vec2f pos, ColorA color) {
-    setup(pos, color);
+Particle::Particle(Vec2f pos, ColorA color, float radius, int life) {
+    setup(pos, color, radius, life);
 }
 
-int Particle::getLife() {
-    return life;
+float Particle::getLife() {
+    return currentLife;
 }
 
-void Particle::setup(Vec2f pos, ColorA color) {
+void Particle::setup(Vec2f pos, ColorA color, float radius, int life) {
     this->pos = pos;
     this->color = color;
-    currentRadius = radius = 30.0f;
-    life = 120;
+    this->currentRadius = this->radius = radius;
+    this->currentLife = this->life = life;
 }
 
 void Particle::update() {
-    float ratio = life/120.0f;
+    float ratio = currentLife/life;
     currentRadius = radius * ratio;
     color.a = ratio;
-    life--;
+    currentLife--;
 }
 
-void Particle::draw() {
+void Particle::draw(int shapeIndex) {
     gl::color(color);
-    gl::drawSolidCircle(pos, currentRadius);
+    if (shapeIndex == 0) {
+        gl::drawSolidCircle(pos, currentRadius);
+    } else if (shapeIndex == 1) {
+        float halfRad = currentRadius/2.0f;
+        Rectf rect = Rectf(pos.x-halfRad,pos.y-halfRad,pos.x+halfRad,pos.y+halfRad);
+        gl::drawSolidRect(rect);
+    }
 }

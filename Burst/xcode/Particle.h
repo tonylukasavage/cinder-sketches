@@ -17,19 +17,19 @@ using namespace ci;
 class Particle {
 public:
     Particle();
-    Particle(Vec2f pos, ColorA color);
+    Particle(Vec2f pos, ColorA color, float radius, int life);
     
-    void setup(Vec2f pos, ColorA color);
-    void draw();
+    void setup(Vec2f pos, ColorA color, float radius, int life);
+    void draw(int shapeIndex);
     void update();
     
-    int getLife();
+    float getLife();
     
 private:
     Vec2f pos;
     ColorA color;
     float radius, currentRadius;
-    int life;
+    float life, currentLife;
 };
 
 #endif /* defined(__Burst__Particle__) */

@@ -20,6 +20,9 @@ private:
     std::vector<Particle> particles;
     std::vector<Particle>::iterator pIter;
     ColorA color;
+    int life;
+    float radius;
+    int shapeIndex;
     
     ColorA randomColor();
 };
@@ -38,6 +41,9 @@ void DynamicBrush::prepareSettings( Settings *settings )
 void DynamicBrush::setup()
 {
     color = randomColor();
+    life = 120;
+    radius = 30.0f;
+    shapeIndex = 0;
     
     // enable transparency
     glEnable (GL_BLEND);
@@ -47,13 +53,35 @@ void DynamicBrush::setup()
 void DynamicBrush::mouseDrag( MouseEvent event )
 {
     particles.push_back(
-        Particle(Vec2f(event.getX(),event.getY()), color)
+        Particle(Vec2f(event.getX(),event.getY()), color, radius, life)
     );
 }
 
 void DynamicBrush::keyDown(KeyEvent event) {
-    if (event.getChar() == 'c') {
-        color = randomColor();
+    switch (event.getChar()) {
+        case 'c':
+            color = randomColor();
+            break;
+        case 'e':
+            radius++;
+            break;
+        case 'r':
+            radius--;
+            break;
+        case 'd':
+            life++;
+            break;
+        case 'f':
+            life--;
+            break;
+        case 's':
+            if (shapeIndex < 1) {
+                shapeIndex++;
+            } else {
+                shapeIndex = 0;
+            }
+        default:
+            break;
     }
 }
 
@@ -66,13 +94,14 @@ void DynamicBrush::draw()
 	// clear out the window with black
 	gl::clear( Color( 255, 255, 255 ) );
     
+    // draw particles, eliminate "dead" ones
     pIter = particles.begin();
     while(pIter != particles.end()) {
         if (pIter->getLife() <= 0) {
             pIter = particles.erase(pIter);
         } else {
             pIter->update();
-            pIter->draw();
+            pIter->draw(shapeIndex);
             pIter++;
         }
     }
